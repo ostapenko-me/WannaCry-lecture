@@ -1,0 +1,23 @@
+{
+  "name": "lecture-1",
+  "version": "1.0.0",
+  "description": "Защита ОС. Лекция 1",
+  "main": "index.js",
+  "scripts": {
+    "start": "reload -b"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KOPTE3/lecture-1.git"
+  },
+  "keywords": [],
+  "author": "Anatoliy Ostapenko <ostapencko.anatoliy@yandex.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KOPTE3/lecture-1/issues"
+  },
+  "homepage": "https://github.com/KOPTE3/lecture-1#readme",
+  "devDependencies": {
+    "reload": "^1.1.1"
+  }
+}
