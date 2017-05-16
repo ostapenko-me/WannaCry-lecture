@@ -1,22 +1,22 @@
 {
-  "name": "lecture-1",
+  "name": "wannacrypt",
   "version": "1.0.0",
-  "description": "Защита ОС. Лекция 1",
-  "main": "index.js",
+  "description": "About WannaCry attack and Protection against attacks",
+  "main": "index.html",
   "scripts": {
     "start": "reload -b"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KOPTE3/lecture-1.git"
+    "url": "git+https://github.com/KOPTE3/WannaCry-lecture.git"
   },
   "keywords": [],
   "author": "Anatoliy Ostapenko <ostapencko.anatoliy@yandex.ru>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KOPTE3/lecture-1/issues"
+    "url": "https://github.com/KOPTE3/WannaCry-lecture/issues"
   },
-  "homepage": "https://github.com/KOPTE3/lecture-1#readme",
+  "homepage": "https://github.com/KOPTE3/WannaCry-lecture#readme",
   "devDependencies": {
     "reload": "^1.1.1"
   }
