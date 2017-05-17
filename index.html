@@ -53,7 +53,13 @@
 	</section>
 
 	<section class="slide question">
-		<h2><strong>250 000 +</strong> computers</h2>
+		<h2><strong>300 000 +</strong> computers</h2>
+	</section>
+
+	<section class="slide question">
+		<div style="position:relative;width: 100%;height: 100%;margin: 0 auto;">
+			<img class="place" src="total.png" style="transform-origin: center;transform: translate(-50%,-10%) scale(1.7);">
+		</div>
 	</section>
 
 	<section class="slide question">
@@ -178,12 +184,206 @@
 
 
 
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Expansion</em></strong><br>
+			<div style="font-size: 60%; line-height: 1.2; margin-top: 20px;">
+				<ul>
+					<li>Уязвимость EthernalBlue</li>
+					<li>Бэкдор DoublePulsar</li>
+				</ul>
+			</div>
+		</span></h2>
+	</section>
 
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>EthernalBlue</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				1. Уязвимость EthernalBlue &mdash; позволяет через уязвимый SMB <em>получать удаленный доступ к компьютеру</em> и незаметно <em>устанавливать на него программное обеспечение</em>
+			</div>
+		</span></h2>
+	</section>
 
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>SMB</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				<strong>SMB (<em>Server Message Block</em>)</strong> &mdash; сетевой протокол прикладного уровня для удалённого доступа к файлам, принтерам и другим сетевым ресурсам, а также для межпроцессного взаимодействия
+				<p class="note">Критическая уязвимость MS17-010 в протоколе SMBv1</p>
+			</div>
+		</span></h2>
+	</section>
 
+	<section class="slide question">
+		<div style="position:relative;width: 100%;height: 100%;margin: 0 auto;">
+			<img class="place" src="meme.jpg" style="transform-origin: center;transform: translate(-50%,-54%) scale(0.6);">
+		</div>
+	</section>
 
+	<section class="slide question">
+		<iframe width="100%" height="90%" src="https://www.youtube.com/embed/6rrY0S8x3HQ" frameborder="0" allowfullscreen></iframe>
+	</section>
 
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>DoublePulsar</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				2. Бэкдор DoublePulsar &mdash; позволяет получать удаленный доступ и выполнять произвольный код на <em>предварительно скомпрометированной машине</em>
+			</div>
+		</span></h2>
+	</section>
 
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Is given:</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				<ul>
+					<li>Эксплойты, украденные Shadow Brokers</li>
+					<li>Самописный сканнер сети на C/Python</li>
+					<li>Linux сервер</li>
+				</ul>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Solution:</em></strong><br>
+			<div style="font-size: 35%; line-height: 1.2; margin-top: 20px;">
+				<ul>
+					<li>Скрипт сканнера запускается на сервере</li>
+					<li>Вбивается определенный диапазон IP или целая страна</li>
+					<li>Скрипт сканирует диапазон на открытый 445 (и 139) порт</li>
+					<li>В случае удачного обнаружения SMB сервиса, посылается эксплойт, вызывающий переполнение буфера</li>
+					<li>Эксплойт закачивает файл и запускает его</li>
+				</ul>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>How?</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				<ul>
+					<li>Распространяется как червь, заражает компьютер</li>
+					<li>Функция «kill switch»</li>
+					<li>Шифрует файлы 2048-битным RSA</li>
+					<li>Устанавливает соединение с узлами сети Tor</li>
+				</ul>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Infection</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.3; margin-top: 20px;">
+				1. <code>reg.exe</code> добавляет исполняемый файл <code>tasksche.exe</code> в автозапуск: <br>
+				<br>
+				<pre class="hljs cmd" style="font-size: 48%">
+				<code>cmd.exe /c reg add hklm\software\microsoft\windows\currentversion\run \</code>
+				<code>/v "abzyckxcqecwnu394" /t reg_sz /d "\"c:\intel\abzyckxcqecwnu394\tasksche.exe\""</code></pre>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Infection</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				2. В систему дополнительно устанавливются сервисы для обеспечения "выживаемости":
+				<br>
+				<br>
+				<pre class="hljs sh" style="font-size: 48%">
+				<code>c:\documents and settings\48=8ab@0b@\desktop\mapkep.bin</code>
+				<code>c:\intel\abzyckxcqecwnu394\tasksche.exe</code></pre>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Infection</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				3. <code>tasksche.exe</code> или сам вирус извлекает из себя и запускает файл <code>@wanadecryptor@.exe</code> множество раз в различные пользовательские папки и другие директории, содержащие файлы для зашифровывания <br>
+				<p class="note">Далее происходит запуск большинства извлечённых компонентов</p>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Infection</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				4. Процесс <code>@wanadecryptor@.exe</code> в свою очередь извлекает компоненты Tor-клиента и запускает его приложение <code style="font-size: 70%">c:\intel\abzyckxcqecwnu394\taskdata\tor\taskhsvc.exe</code>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<code style="font-size: 100%;">
+			iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea[.]com
+		</code>
+		<div style="position:relative;width: 100%;height: 100%;overflow: hidden;margin: 0 auto;">
+			<img class="place" src="kill-switch.jpg" style="transform-origin: center;transform: translate(-50%,-65%) scale(1);">
+		</div>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>What is encrypted?</em></strong><br>
+			<div style="font-size: 14%; line-height: 1.2; margin-top: 20px;">
+				.der, .pfx, .key, .crt, .csr, .p12, .pem, .odt, .sxw, .stw, .3ds, .max, .3dm, .ods, .sxc, .stc, .dif, .slk, .wb2, .odp, .sxd, .std, .sxm, <em style="font-size: 300%">.sqlite3, .sqlitedb, .sql</em>, .accdb, .mdb, .dbf, .odb, .mdf, .ldf, <em style="font-size: 300%">.cpp, .pas, .asm, .cmd, .bat</em>, .vbs, .sch, .jsp, .php, .asp, .java, .jar, .class, <em style="font-size: 300%">.mp3, .wav, .swf, .fla</em>, .wmv, .mpg, .vob, .mpeg, .asf, <em style="font-size: 300%">.avi, .mov, .mp4, .mkv, .flv</em>, .wma, .mid, .m3u, .m4u, <em style="font-size: 300%">.svg, .psd, .tiff, .tif, .raw, .gif, .png, .bmp, .jpg, .jpeg, .iso, .backup, .zip, .rar, .tgz, .tar</em>, .bak, .ARC, .vmdk, .vdi, .sldm, .sldx, .sti, .sxi, .dwg, .pdf, .wk1, .wks, .rtf, .csv, .txt, .msg, .pst, .ppsx, .ppsm, .pps, .pot, .pptm, <em style="font-size: 300%">.pptx, .ppt</em>, .xltm, .xltx, .xlc, .xlm, .xlt, .xlw, .xlsb, .xlsm, <em style="font-size: 300%">.xlsx, .xls</em>, .dotm, .dot, .docm, <em style="font-size: 300%">.docx, .doc</em>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>How?</em></strong><br>
+			<div style="font-size: 40%; line-height: 1.2; margin-top: 20px;">
+				После заражения системы шифровальщик сканирует локальную сеть для поиска других уязвимых хостов, а также сканирует случайные диапазоны сети Интернет
+				<p class="note">Минимальное время заражения системы после выставления в интернет 445 портом — 3 минуты</p>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Security defense</em></strong><br>
+			<div style="font-size: 60%; line-height: 1.2; margin-top: 20px;">
+
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Security defense</em></strong><br>
+			<div style="font-size: 50%; line-height: 1.2; margin-top: 20px;">
+				<ul>
+					<li>Установка патчей, закрывающих описанные уязвимости</li>
+					<li>Установка обновлений безопасности для ОС</li>
+					<li>Правильная настройка МЭ</li>
+				</ul>
+			</div>
+		</span></h2>
+	</section>
+
+	<section class="slide question">
+		<h2><span style="font-size: 90%;">
+			<strong><em>Security defense</em></strong><br>
+			<div style="font-size: 50%; line-height: 1.2; margin-top: 20px;">
+				<ul>
+					<li>Резервное копирование данных</li>
+					<li>Отключение внешних соединений из Интернет по протоколу SMBv1</li>
+					<li>Использование антивирусов и других средств защиты PC</li>
+				</ul>
+			</div>
+		</span></h2>
+	</section>
 
 	<section class="slide">
 		<h2 class="shout">Всем спасибо!</h2>
